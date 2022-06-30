@@ -34,20 +34,29 @@ public class ProductManage implements Serializable {
         writeDocuments(arrayListProduct);
     }
 
-    public void display() {
-        System.out.printf("%5s%15s%21s%13s%18s%20s\n", "Hãng", "Mã Số", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
+    public static void display() {
+        System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Hãng", "Mã Số", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
         for (int i = 0; i < arrayListProduct.size(); i++) {
             System.out.println();
-            System.out.printf("%-16s%-13s%-22s%-15s%-21s%s\n", arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getId(), arrayListProduct.get(i).getName(), arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
+            System.out.printf("%-16s%-16s%-27s%-17s%-21s%s\n", arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getId(), arrayListProduct.get(i).getName(), arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
+            System.out.println();
         }
     }
+
+//    public static void main(String[] args) {
+//        readDocuments();
+//        display();
+//    }
 
     public void searchById(Scanner scanner) {
         System.out.println("Nhập vào id sản phẩm cần tìm: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (Product b : arrayListProduct) {
             if (b.getId() == id) {
-                System.out.println(b);
+                System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Hãng", "Mã Số", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
+                    System.out.println();
+                    System.out.printf("%-16s%-16s%-27s%-17s%-21s%s\n", b.getBrand().getName(),b.getId(),b.getName(),b.getPrice(),b.getAmount(),b.getSize());
+                System.out.println();
             }
         }
     }
@@ -67,9 +76,9 @@ public class ProductManage implements Serializable {
     public void editBrandName(Scanner scanner, int id) {
         for (int i = 0; i < arrayListProduct.size(); i++) {
             if (arrayListProduct.get(i).getId() == (id)) {
-                System.out.println("Nhập tên sản phẩm cần sửa: ");
+                System.out.println("Nhập tên hãng cần sửa: ");
                 String name = scanner.nextLine();
-                arrayListProduct.get(i).setName(name);
+                arrayListProduct.get(i).getBrand().setName(name);
                 writeDocuments(arrayListProduct);
             }
         }
@@ -78,7 +87,7 @@ public class ProductManage implements Serializable {
     public void editProduceName(Scanner scanner, int id) {
         for (int i = 0; i < arrayListProduct.size(); i++) {
             if (arrayListProduct.get(i).getId() == (id)) {
-                System.out.println("Nhập giá sản phẩm cần sửa: ");
+                System.out.println("Nhập tên sản phẩm cần sửa: ");
                 String name = scanner.nextLine();
                 arrayListProduct.get(i).setName(name);
                 writeDocuments(arrayListProduct);
@@ -133,7 +142,7 @@ public class ProductManage implements Serializable {
         }
     }
 
-    public void readDocuments() {
+    public static void readDocuments() {
         File file = new File("Product.txt");
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));

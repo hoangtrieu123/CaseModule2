@@ -102,7 +102,7 @@ public class LoginManage implements Serializable {
 
     public static void displayAccount() {
         for (Register a : arrayListRegister) {
-            System.out.println(a);
+            System.out.println("Tên đăng nhập: " + a.getName());
         }
     }
 }
