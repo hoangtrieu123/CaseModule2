@@ -14,7 +14,7 @@ public class ProductManage implements Serializable {
         System.out.println("Tên sản phẩm: ");
         String nameProduct = scanner.nextLine();
         System.out.println("Giá sản phẩm: ");
-        double price = Double.parseDouble(scanner.nextLine());
+        String price = scanner.nextLine();
         System.out.println("Nhập số lượng: ");
         int amount = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập size: ");
@@ -35,9 +35,10 @@ public class ProductManage implements Serializable {
     }
 
     public void display() {
-        System.out.printf("%s%15s%21s%13s%18s%20s\n", "Hãng", "Mã Số", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
+        System.out.printf("%5s%15s%21s%13s%18s%20s\n", "Hãng", "Mã Số", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
         for (int i = 0; i < arrayListProduct.size(); i++) {
-            System.out.printf("%s%15s%21s%13s%18s%20s\n", arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getId(), arrayListProduct.get(i).getName(), arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
+            System.out.println();
+            System.out.printf("%-16s%-13s%-22s%-15s%-21s%s\n", arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getId(), arrayListProduct.get(i).getName(), arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
         }
     }
 
@@ -89,7 +90,7 @@ public class ProductManage implements Serializable {
         for (int i = 0; i < arrayListProduct.size(); i++) {
             if (arrayListProduct.get(i).getId() == (id)) {
                 System.out.println("Nhập giá sản phẩm cần sửa: ");
-                double price = Double.parseDouble(scanner.nextLine());
+                String price = scanner.nextLine();
                 arrayListProduct.get(i).setPrice(price);
                 writeDocuments(arrayListProduct);
             }
