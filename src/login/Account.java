@@ -2,15 +2,12 @@ package login;
 
 import java.io.Serializable;
 
-public class Register implements Serializable {
+public class Account implements Serializable {
     private String name, password;
 
-    public Register(String name, String password) {
+    public Account(String name, String password) {
         this.name = name;
         this.password = password;
-    }
-
-    public Register() {
     }
 
     public String getName() {
@@ -31,7 +28,7 @@ public class Register implements Serializable {
 
     @Override
     public String toString() {
-        return "register{" +
+        return "Account{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 '}';

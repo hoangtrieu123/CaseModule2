@@ -24,10 +24,10 @@ public class MenuLogin {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    loginManager.addAccount(scanner);
+                    loginManager.addAccount();
                     break;
                 case 2:
-                    loginManager.inputAccount(scanner);
+                    loginManager.login(scanner);
                     int choice1;
                     choice1 = Integer.parseInt(scanner.next());
 

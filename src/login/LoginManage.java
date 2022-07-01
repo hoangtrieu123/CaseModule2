@@ -8,40 +8,54 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LoginManage implements Serializable {
-    public static ArrayList<Register> arrayListRegister = new ArrayList<>();
 
-    public Register creatAccount(Scanner scanner) {
-        System.out.println("1. Nhập tài khoản mới: ");
-        String name = scanner.next();
+
+public class LoginManage {
+    public static ArrayList<Account> arrayListAccounts = new ArrayList<>();
+    public Account creatAccount(Scanner scanner) {
+        String name;
+        do {
+            System.out.println("1. Nhập tài khoản mới: ");
+            name = scanner.next();
+        }
+        while(!checkAccount(name));
         System.out.println("2. Nhập mật khẩu mới: ");
         String password = scanner.next();
-        return new Register(name, password);
+        return new Account(name, password);
+    }
+    public void addAccount() {
+        Scanner scanner = new Scanner(System.in);
+        Account account = creatAccount(scanner);
+        arrayListAccounts.add(account);
+        writeDocuments(arrayListAccounts);
+    }
+    public boolean checkAccount(String name) {
+        for (Account account :arrayListAccounts) {
+            if(account.getName().equals(name)){
+                System.out.println("Tài Khoản Đã Tồn Tại");
+                return false;
+            }
+        }
+        return true;
     }
 
-    public void addAccount(Scanner scanner) {
-        Register register = creatAccount(scanner);
-        arrayListRegister.add(register);
-        writeDocuments(arrayListRegister);
-    }
-
-    public void inputAccount(Scanner scanner) {
+    public void login(Scanner scanner){
         System.out.println("Nhập vào tài khoản: ");
         String name = scanner.next();
         System.out.println("Nhập vào mật khẩu: ");
         String password = scanner.next();
-        Login login = new Login(name, password);
-        if (checkAdmin(login)) {
+        Account account = new Account(name,password);
+        if (checkAdmin(account)) {
             MenuAdmin.Menu();
         } else {
-            checkAccount(login);
+            checkAccount(account);
         }
 
     }
 
-    public boolean checkAdmin(Login login) {
+    public boolean checkAdmin(Account account) {
 
-        if (login.getName().equals("admin") && login.getPassword().equals("admin")) {
+        if (account.getName().equals("admin") && account.getPassword().equals("admin")) {
             return true;
         } else {
             return false;
@@ -49,11 +63,12 @@ public class LoginManage implements Serializable {
 
     }
 
-    public void checkAccount(Login login) {
+    public void checkAccount(Account account) {
         boolean check = false;
-        for (Register register : arrayListRegister) {
-            if (login.getName().equals(register.getName()) && login.getPassword().equals(register.getPassword())) {
+        for (Account a : arrayListAccounts) {
+            if (a.getName().equals(account.getName()) && a.getPassword().equals(account.getPassword())) {
                 check = true;
+                System.out.println("đăng nhập thành công");
                 MenuCustomer.Menu();
             }
         }
@@ -62,15 +77,26 @@ public class LoginManage implements Serializable {
             MenuLogin.LoginMenu();
         }
     }
-
-    public static void writeDocuments(ArrayList<Register> arrayListRegister) {
+    public static void displayAccount(){
+        for (Account a: arrayListAccounts) {
+            System.out.println("User Name: " + a.getName());
+        }
+    }
+    public static void deleteAccount(Scanner scanner){
+        System.out.println("Tên tài khoản muốn xóa: ");
+        String name = scanner.nextLine();
+        for (Account a: arrayListAccounts) {
+            if (a.getName().equals(name));
+        }
+    }
+    public void writeDocuments(ArrayList<Account> arrayListAccounts) {
         File file = new File("Account.txt");
         try {
             if (!file.exists()) {
                 file.createNewFile();
             }
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-            objectOutputStream.writeObject(arrayListRegister);
+            objectOutputStream.writeObject(arrayListAccounts);
             objectOutputStream.close();
         } catch (Exception e) {
             System.out.println("File đã tồn tại");
@@ -81,28 +107,10 @@ public class LoginManage implements Serializable {
         File file = new File("Account.txt");
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
-            arrayListRegister = (ArrayList<Register>) objectInputStream.readObject();
+            arrayListAccounts = (ArrayList<Account>) objectInputStream.readObject();
             objectInputStream.close();
         } catch (Exception e) {
             System.out.println("File đã tồn tại");
-        }
-    }
-
-    public static void deleteAccount(Scanner scanner) {
-        String name = "";
-        System.out.println("Nhập tên đăng nhập muốn xóa: ");
-        name = scanner.nextLine();
-        for (int i = 0; i < arrayListRegister.size(); i++) {
-            if (arrayListRegister.get(i).getName().equals(name)) {
-                arrayListRegister.remove(i);
-                writeDocuments(arrayListRegister);
-            }
-        }
-    }
-
-    public static void displayAccount() {
-        for (Register a : arrayListRegister) {
-            System.out.println("Tên đăng nhập: " + a.getName());
         }
     }
 }
