@@ -1,37 +1,53 @@
 package login;
-
+import information.InformationCustomer;
 import menu.MenuAdmin;
 import menu.MenuCustomer;
 import menu.MenuLogin;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
-
 
 
 public class LoginManage {
     public static ArrayList<Account> arrayListAccounts = new ArrayList<>();
+
     public Account creatAccount(Scanner scanner) {
-        String name;
+        String Username;
         do {
             System.out.println("1. Nhập tài khoản mới: ");
-            name = scanner.next();
+            Username = scanner.nextLine();
         }
-        while(!checkAccount(name));
+        while (!checkAccount(Username));
         System.out.println("2. Nhập mật khẩu mới: ");
         String password = scanner.next();
-        return new Account(name, password);
+        System.out.println("Cho mình xin tên bạn ạ: ");
+        String nameCustomer = scanner.next();
+        System.out.println("Xin cái địa chỉ?: ");
+        scanner.nextLine();
+        String address = scanner.nextLine();
+        System.out.println("Cho mình xin số điện thoại ạ: ");
+        int telephone = Integer.parseInt(scanner.nextLine());
+        InformationCustomer information = new InformationCustomer(nameCustomer, address, telephone);
+        return new Account(Username, password, information);
     }
+
     public void addAccount() {
         Scanner scanner = new Scanner(System.in);
         Account account = creatAccount(scanner);
         arrayListAccounts.add(account);
         writeDocuments(arrayListAccounts);
     }
+
     public boolean checkAccount(String name) {
-        for (Account account :arrayListAccounts) {
-            if(account.getName().equals(name)){
+        String admin = "admin";
+        if(name.equals(admin)){
+            System.out.println("Tài Khoản Đã Tồn Tại");
+            return false;
+        }
+        for (Account account : arrayListAccounts) {
+            if (account.getName().equals(name)) {
                 System.out.println("Tài Khoản Đã Tồn Tại");
                 return false;
             }
@@ -39,12 +55,13 @@ public class LoginManage {
         return true;
     }
 
-    public void login(Scanner scanner){
+
+    public void login(Scanner scanner) {
         System.out.println("Nhập vào tài khoản: ");
         String name = scanner.next();
         System.out.println("Nhập vào mật khẩu: ");
         String password = scanner.next();
-        Account account = new Account(name,password);
+        Account account = new Account(name, password);
         if (checkAdmin(account)) {
             MenuAdmin.Menu();
         } else {
@@ -77,19 +94,25 @@ public class LoginManage {
             MenuLogin.LoginMenu();
         }
     }
-    public static void displayAccount(){
-        for (Account a: arrayListAccounts) {
-            System.out.println("User Name: " + a.getName());
+
+    public static void displayAccount() {
+        for (Account a : arrayListAccounts) {
+            System.out.println(a);
         }
     }
-    public static void deleteAccount(Scanner scanner){
+
+    public static void deleteAccount(Scanner scanner) {
         System.out.println("Tên tài khoản muốn xóa: ");
         String name = scanner.nextLine();
-        for (Account a: arrayListAccounts) {
-            if (a.getName().equals(name));
+        for (int i = 0; i < arrayListAccounts.size(); i++) {
+            if (arrayListAccounts.get(i).getName().equals(name)) {
+                arrayListAccounts.remove(i);
+            }
         }
+        writeDocuments(arrayListAccounts);
     }
-    public void writeDocuments(ArrayList<Account> arrayListAccounts) {
+
+    public static void writeDocuments(ArrayList<Account> arrayListAccounts) {
         File file = new File("Account.txt");
         try {
             if (!file.exists()) {
