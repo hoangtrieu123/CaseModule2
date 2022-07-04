@@ -1,23 +1,24 @@
 package information;
 
-public class InformationCustomer {
-    private String name;
+import java.io.Serializable;
+
+public class InformationCustomer implements Serializable {
+    private String nameCustomer;
     private String address;
-    private int telephone;
+    private String telephone;
 
-
-    public InformationCustomer(String name, String address, int telephone) {
-        this.name = name;
+    public InformationCustomer(String nameCustomer, String address, String telephone) {
+        this.nameCustomer = nameCustomer;
         this.address = address;
         this.telephone = telephone;
     }
 
-    public String getName() {
-        return name;
+    public String getNameCustomer() {
+        return nameCustomer;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
     public String getAddress() {
@@ -28,18 +29,18 @@ public class InformationCustomer {
         this.address = address;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
     @Override
     public String toString() {
         return "InformationCustomer{" +
-                "name='" + name + '\'' +
+                "nameCustomer='" + nameCustomer + '\'' +
                 ", address='" + address + '\'' +
                 ", telephone=" + telephone +
                 '}';

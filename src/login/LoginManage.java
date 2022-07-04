@@ -1,4 +1,5 @@
 package login;
+
 import information.InformationCustomer;
 import menu.MenuAdmin;
 import menu.MenuCustomer;
@@ -21,14 +22,13 @@ public class LoginManage {
         }
         while (!checkAccount(Username));
         System.out.println("2. Nhập mật khẩu mới: ");
-        String password = scanner.next();
+        String password = scanner.nextLine();
         System.out.println("Cho mình xin tên bạn ạ: ");
-        String nameCustomer = scanner.next();
+        String nameCustomer = scanner.nextLine();
         System.out.println("Xin cái địa chỉ?: ");
-        scanner.nextLine();
         String address = scanner.nextLine();
         System.out.println("Cho mình xin số điện thoại ạ: ");
-        int telephone = Integer.parseInt(scanner.nextLine());
+        String telephone = scanner.nextLine();
         InformationCustomer information = new InformationCustomer(nameCustomer, address, telephone);
         return new Account(Username, password, information);
     }
@@ -42,7 +42,7 @@ public class LoginManage {
 
     public boolean checkAccount(String name) {
         String admin = "admin";
-        if(name.equals(admin)){
+        if (name.equals(admin)) {
             System.out.println("Tài Khoản Đã Tồn Tại");
             return false;
         }
@@ -95,9 +95,18 @@ public class LoginManage {
         }
     }
 
-    public static void displayAccount() {
-        for (Account a : arrayListAccounts) {
-            System.out.println(a);
+//    public static void displayAccount() {
+//        for (Account a : arrayListAccounts) {
+//            System.out.println(a);
+//        }
+//    }
+
+    public static void displayInformationCustomer() {
+        System.out.printf("%-3s%25s%20s%30s", "Tên đăng nhập", "Tên khách hàng", "Địa chỉ", "Số điện thoại");
+        for (int i = 0; i < arrayListAccounts.size(); i++) {
+            System.out.println();
+            System.out.printf("%-22s%-25s%-30s%s", arrayListAccounts.get(i).getName(), arrayListAccounts.get(i).getInformationCustomer().getNameCustomer(), arrayListAccounts.get(i).getInformationCustomer().getAddress(), arrayListAccounts.get(i).getInformationCustomer().getTelephone());
+            System.out.println();
         }
     }
 

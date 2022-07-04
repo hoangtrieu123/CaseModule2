@@ -69,10 +69,10 @@ public class MenuAdmin implements Serializable {
                     productManage.searchById(scanner);
                     break;
                 case 5:
-                    productManage.display();
+                    productManage.displayProduct();
                     break;
                 case 6:
-                    LoginManage.displayAccount();
+                    LoginManage.displayInformationCustomer();
                     break;
                 case 7:
                     LoginManage.deleteAccount(scanner);
