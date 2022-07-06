@@ -80,7 +80,10 @@ public class LoginManage {
 
     }
 
+    int count;
+
     public void checkAccount(Account account) {
+
         boolean check = false;
         for (Account a : arrayListAccounts) {
             if (a.getName().equals(account.getName()) && a.getPassword().equals(account.getPassword())) {
@@ -88,21 +91,21 @@ public class LoginManage {
                 System.out.println("đăng nhập thành công");
                 MenuCustomer.Menu();
             }
+            if (!check) {
+                System.out.println("Sai mật khẩu hoặc tên đăng nhập khách ơi.");
+                MenuLogin.LoginMenu();
+                count++;
+                if ( count ==3){
+                    System.out.println("238482348238942389489234");
+                }
+            }
         }
-        if (!check) {
-            System.out.println("Sai mật khẩu hoặc tên đăng nhập khách ơi.");
-            MenuLogin.LoginMenu();
-        }
-    }
 
-//    public static void displayAccount() {
-//        for (Account a : arrayListAccounts) {
-//            System.out.println(a);
-//        }
-//    }
+    }
 
     public static void displayInformationCustomer() {
         System.out.printf("%-3s%25s%20s%30s", "Tên đăng nhập", "Tên khách hàng", "Địa chỉ", "Số điện thoại");
+        System.out.println();
         for (int i = 0; i < arrayListAccounts.size(); i++) {
             System.out.println();
             System.out.printf("%-22s%-25s%-30s%s", arrayListAccounts.get(i).getName(), arrayListAccounts.get(i).getInformationCustomer().getNameCustomer(), arrayListAccounts.get(i).getInformationCustomer().getAddress(), arrayListAccounts.get(i).getInformationCustomer().getTelephone());
