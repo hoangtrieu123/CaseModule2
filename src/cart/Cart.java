@@ -10,7 +10,7 @@ public class Cart extends Product {
     private Account account;
     private int count;
     private Product product;
-    private double totalPrice;
+    private int totalPrice;
 
     public Cart() {
 
@@ -65,8 +65,12 @@ public class Cart extends Product {
         this.product = product;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
     @Override

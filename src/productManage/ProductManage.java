@@ -39,7 +39,7 @@ public class ProductManage implements Serializable {
         System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
         for (int i = 0; i < arrayListProduct.size(); i++) {
             System.out.println();
-            System.out.printf("%-16s%-16s%-27s%-17s%-21s%s\n", arrayListProduct.get(i).getId(), arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getName(), arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
+            System.out.printf("%-16s%-16s%-27s%s%-17s%-21s%s\n", arrayListProduct.get(i).getId(), arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getName(), "$", arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
             System.out.println();
         }
     }
@@ -51,7 +51,7 @@ public class ProductManage implements Serializable {
             if (b.getId() == id) {
                 System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
                 System.out.println();
-                System.out.printf("%-16s%-16s%-27s%-17s%-21s%s\n", b.getId(), b.getBrand().getName(), b.getName(), b.getPrice(), b.getAmount(), b.getSize());
+                System.out.printf("%-16s%-16s%-27s%s%-17s%-21s%s\n", b.getId(), b.getBrand().getName(), b.getName(), "$", b.getPrice(), b.getAmount(), b.getSize());
                 System.out.println();
             }
         }
@@ -64,7 +64,7 @@ public class ProductManage implements Serializable {
         for (Product b : arrayListProduct) {
             if (b.getName().toUpperCase().contains(search.toUpperCase())) {
                 System.out.println();
-                System.out.printf("%-16s%-16s%-27s%-17s%-21s%s\n", b.getId(), b.getBrand().getName(), b.getName(), b.getPrice(), b.getAmount(), b.getSize());
+                System.out.printf("%-16s%-16s%-27s%s%-17s%-21s%s\n", b.getId(), b.getBrand().getName(), b.getName(), "$", b.getPrice(), b.getAmount(), b.getSize());
                 System.out.println();
             }
         }

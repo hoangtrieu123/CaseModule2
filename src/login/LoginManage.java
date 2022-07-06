@@ -63,11 +63,10 @@ public class LoginManage {
             String name = scanner.next();
             System.out.println("Nhập vào mật khẩu: ");
             String password = scanner.next();
-            Account account = new Account(name, password);
-            if (checkAdmin(account)) {
+            if (checkAdmin(name,password)) {
                 MenuAdmin.Menu();
             } else {
-                checkAccount(account);
+                checkAccount(name,password);
             }
             count ++;
         }
@@ -76,9 +75,9 @@ public class LoginManage {
             MenuLogin.LoginMenu();
     }
 
-    public boolean checkAdmin(Account account) {
+    public boolean checkAdmin(String account,String password) {
 
-        if (account.getName().equals("admin") && account.getPassword().equals("admin")) {
+        if (account.equals("admin") && password.equals("admin")) {
             return true;
         } else {
             return false;
@@ -87,10 +86,10 @@ public class LoginManage {
     }
 
 
-    public static void checkAccount(Account account) {
+    public static void checkAccount(String name,String password) {
         boolean check = false;
         for (Account a : arrayListAccounts) {
-            if (a.getName().equals(account.getName()) && a.getPassword().equals(account.getPassword())) {
+            if (a.getName().equals(name) && a.getPassword().equals(password)) {
                 check = true;
                 System.out.println("đăng nhập thành công");
                 MenuCustomer.Menu();

@@ -24,9 +24,10 @@ public class MenuAdmin implements Serializable {
             System.out.println("2. Sửa sản phẩm");
             System.out.println("3. Xóa sản phẩm theo ID");
             System.out.println("4. Tìm sản phẩm theo ID");
-            System.out.println("5. Hiển thị toàn bộ sản phẩm của shop");
-            System.out.println("6. Hiển thị các tài khoản đã đăng ký");
-            System.out.println("7. Xóa tài khoản khách");
+            System.out.println("5. Tìm sản phẩm theo tên");
+            System.out.println("6. Hiển thị toàn bộ sản phẩm của shop");
+            System.out.println("7. Hiển thị các tài khoản đã đăng ký");
+            System.out.println("8. Xóa tài khoản khách");
             System.out.println("0. Đăng xuất");
             System.out.println("Nhập lựa chọn: ");
             choice = Integer.parseInt(scanner.nextLine());
@@ -69,17 +70,18 @@ public class MenuAdmin implements Serializable {
                     productManage.searchById(scanner);
                     break;
                 case 5:
-                    productManage.displayProduct();
-                    break;
-                case 6:
-                    LoginManage.displayInformationCustomer();
-                    break;
-                case 7:
-                    LoginManage.deleteAccount(scanner);
-                    break;
-                case 8:
                     productManage.searchByName(scanner);
                     break;
+                case 6:
+                    productManage.displayProduct();
+                    break;
+                case 7:
+                    LoginManage.displayInformationCustomer();
+                    break;
+                case 8:
+                    LoginManage.deleteAccount(scanner);
+                    break;
+
                 case 0:
                     MenuLogin.LoginMenu();
                     break;
