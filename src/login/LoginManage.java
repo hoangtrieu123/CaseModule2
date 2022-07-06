@@ -25,7 +25,7 @@ public class LoginManage {
         String password = scanner.nextLine();
         System.out.println("Cho mình xin tên bạn ạ: ");
         String nameCustomer = scanner.nextLine();
-        System.out.println("Xin cái địa chỉ?: ");
+        System.out.println("Cho mình xin địa chỉ ạ: ");
         String address = scanner.nextLine();
         System.out.println("Cho mình xin số điện thoại ạ: ");
         String telephone = scanner.nextLine();
@@ -43,7 +43,7 @@ public class LoginManage {
     public boolean checkAccount(String name) {
         String admin = "admin";
         if (name.equals(admin)) {
-            System.out.println("Tài Khoản Đã Tồn Tại");
+            System.out.println("Trùng với tài khoản admin rồi bạn ơi!");
             return false;
         }
         for (Account account : arrayListAccounts) {

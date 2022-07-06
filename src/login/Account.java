@@ -8,6 +8,10 @@ public class Account implements Serializable {
     private String name, password;
     private InformationCustomer informationCustomer;
 
+    public Account() {
+    }
+
+
     public Account(String name, String password, InformationCustomer informationCustomer) {
         this.name = name;
         this.password = password;
@@ -23,13 +27,13 @@ public class Account implements Serializable {
         this.password = password;
     }
 
+
     public Account(String username, String password, String nameCustomer, String address, int telephone) {
     }
 
     public Account(String nameCustomer, String address, int telephone) {
 
     }
-
 
     public String getName() {
         return name;

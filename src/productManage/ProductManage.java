@@ -8,13 +8,14 @@ import java.util.Scanner;
 
 public class ProductManage implements Serializable {
     public static ArrayList<Product> arrayListProduct = new ArrayList<>();
+    ArrayList<Product> arrayListCart = new ArrayList<>();
 
     public Product createProduct(Scanner scanner) {
         Brand brand = createBrand(scanner);
         System.out.println("Tên sản phẩm: ");
         String nameProduct = scanner.nextLine();
         System.out.println("Giá sản phẩm: ");
-        String price = scanner.nextLine();
+        int price = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập số lượng: ");
         int amount = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập size: ");
@@ -68,6 +69,7 @@ public class ProductManage implements Serializable {
         }
     }
 
+
     public void editBrandName(Scanner scanner, int id) {
         for (int i = 0; i < arrayListProduct.size(); i++) {
             if (arrayListProduct.get(i).getId() == (id)) {
@@ -94,7 +96,7 @@ public class ProductManage implements Serializable {
         for (int i = 0; i < arrayListProduct.size(); i++) {
             if (arrayListProduct.get(i).getId() == (id)) {
                 System.out.println("Nhập giá sản phẩm cần sửa: ");
-                String price = scanner.nextLine();
+                int price = Integer.parseInt(scanner.nextLine());
                 arrayListProduct.get(i).setPrice(price);
                 writeDocuments(arrayListProduct);
             }
@@ -133,7 +135,7 @@ public class ProductManage implements Serializable {
             objectOutputStream.writeObject(arrayListProduct);
             objectOutputStream.close();
         } catch (Exception e) {
-            System.out.println("File đã tồn tại");
+            System.out.println(".");
         }
     }
 
@@ -144,7 +146,7 @@ public class ProductManage implements Serializable {
             arrayListProduct = (ArrayList<Product>) objectInputStream.readObject();
             objectInputStream.close();
         } catch (Exception e) {
-            System.out.println("File đã tồn tại");
+            System.out.println(".");
         }
     }
 }

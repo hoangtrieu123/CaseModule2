@@ -23,8 +23,7 @@ public class Brand implements Serializable {
 
     @Override
     public String toString() {
-        return "productManage.Brand{" +
-                "name='" + name + '\'' +
-                '}';
+        return
+                "name=" + name;
     }
 }

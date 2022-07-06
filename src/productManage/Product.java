@@ -6,12 +6,12 @@ public class Product implements Serializable {
     public static int ID = 0;
     private int id;
     private String name;
-    private String price;
+    private int price;
     private int amount;
     private String size;
     private Brand brand;
 
-    public Product(int id, String name, String price, int amount, String size, Brand brand) {
+    public Product(int id, String name, int price, int amount, String size, Brand brand) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -20,7 +20,7 @@ public class Product implements Serializable {
         this.brand = brand;
     }
 
-    public Product(String name, String price, int amount, String size, Brand brand) {
+    public Product(String name, int price, int amount, String size, Brand brand) {
         try {
             ID = ProductManage.arrayListProduct.get(ProductManage.arrayListProduct.size() - 1).getId();
         } catch (Exception e) {
@@ -67,11 +67,11 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -101,13 +101,11 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "productManage.Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return
+                 brand+
+                ", name=" + name +
                 ", price=" + price +
-                ", amount=" + amount +
-                ", size='" + size + '\'' +
-                ", brand=" + brand +
-                '}';
+                ", size=" + size;
+
     }
 }
