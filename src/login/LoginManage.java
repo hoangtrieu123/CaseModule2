@@ -57,17 +57,23 @@ public class LoginManage {
 
 
     public void login(Scanner scanner) {
-        System.out.println("Nhập vào tài khoản: ");
-        String name = scanner.next();
-        System.out.println("Nhập vào mật khẩu: ");
-        String password = scanner.next();
-        Account account = new Account(name, password);
-        if (checkAdmin(account)) {
-            MenuAdmin.Menu();
-        } else {
-            checkAccount(account);
+        int count=0;
+        do {
+            System.out.println("Nhập vào tài khoản: ");
+            String name = scanner.next();
+            System.out.println("Nhập vào mật khẩu: ");
+            String password = scanner.next();
+            Account account = new Account(name, password);
+            if (checkAdmin(account)) {
+                MenuAdmin.Menu();
+            } else {
+                checkAccount(account);
+            }
+            count ++;
         }
-
+        while (count<3);
+            System.out.println("Liên Hệ Admin");
+            MenuLogin.LoginMenu();
     }
 
     public boolean checkAdmin(Account account) {
@@ -80,10 +86,8 @@ public class LoginManage {
 
     }
 
-    int count;
 
-    public void checkAccount(Account account) {
-
+    public static void checkAccount(Account account) {
         boolean check = false;
         for (Account a : arrayListAccounts) {
             if (a.getName().equals(account.getName()) && a.getPassword().equals(account.getPassword())) {
@@ -91,16 +95,10 @@ public class LoginManage {
                 System.out.println("đăng nhập thành công");
                 MenuCustomer.Menu();
             }
-            if (!check) {
-                System.out.println("Sai mật khẩu hoặc tên đăng nhập khách ơi.");
-                MenuLogin.LoginMenu();
-                count++;
-                if ( count ==3){
-                    System.out.println("238482348238942389489234");
-                }
-            }
         }
-
+        if (!check) {
+            System.out.println("Sai mật khẩu hoặc tên đăng nhập khách ơi.");
+        }
     }
 
     public static void displayInformationCustomer() {

@@ -14,9 +14,6 @@ import static productManage.ProductManage.arrayListProduct;
 public class CartManage {
     Scanner scanner = new Scanner(System.in);
     public static ArrayList<Cart> arrayListCart = new ArrayList<>();
-    Account account = new Account();
-    Cart cart = new Cart();
-
     public CartManage() {
     }
 
@@ -40,16 +37,12 @@ public class CartManage {
     }
 
     public void addCart() {
+
         Cart cart = createCart();
         arrayListCart.add(cart);
         writeDocuments(arrayListCart);
     }
 
-//        public void display() {
-//        for (Cart a : arrayListCart) {
-//            System.out.println(a);
-//        }
-//    }
     public void displayCart() {
         System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
         for (int i = 0; i < arrayListCart.size(); i++) {
