@@ -89,38 +89,3 @@ public class CartManage {
     }
 }
 
-
-
-
-//
-
-
-//    public void pickProduct(Scanner scanner) {
-//        System.out.println("Nhập mã sản phẩm muốn mua đi homieee: ");
-//        int id = Integer.parseInt(scanner.nextLine());
-//        for (int i = 0; i < arrayListCart.size(); i++) {
-//            if (arrayListProduct.get(i).getId() == (id)) {
-//                arrayListCart.add(arrayListProduct.get(i));
-//                choseAmount(scanner,id);
-//            }
-//        }
-//    }
-//
-//    public void choseAmount(Scanner scanner,int id) {
-//        System.out.println("Nhập số lượng bạn cần mua ạ: ");
-//        int amountBuy = Integer.parseInt(scanner.nextLine());
-//        for (int i = 0; i < arrayListCart.size(); i++) {
-//            if (arrayListCart.get(i).getId() == (id)) {
-//                arrayListCart.get(i).setAmount(amountBuy);
-//            }
-//        }
-//    }
-//
-//    public void displayCart(Scanner sc) {
-//        System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
-//        for (int i = 0; i < arrayListCart.size(); i++) {
-//            System.out.println();
-//            System.out.printf("%-16s%-16s%-27s%-17s%-21s%s\n", arrayListCart.get(i).getId(), arrayListCart.get(i).getBrand().getName(), arrayListCart.get(i).getName(), arrayListCart.get(i).getPrice(), arrayListCart.get(i).getAmount(), arrayListCart.get(i).getSize());
-//            System.out.println();
-//        }
-

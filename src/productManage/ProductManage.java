@@ -57,6 +57,19 @@ public class ProductManage implements Serializable {
         }
     }
 
+    public void searchByName(Scanner scanner) {
+        System.out.println("Nhập tên đồ cần tìm đi bro: ");
+        String search = scanner.nextLine();
+        System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
+        for (Product b : arrayListProduct) {
+            if (b.getName().toUpperCase().contains(search.toUpperCase())) {
+                System.out.println();
+                System.out.printf("%-16s%-16s%-27s%-17s%-21s%s\n", b.getId(), b.getBrand().getName(), b.getName(), b.getPrice(), b.getAmount(), b.getSize());
+                System.out.println();
+            }
+        }
+    }
+
     public void deleteProduct(Scanner scanner) {
         System.out.println("Nhập vào id sản phẩm cần xóa: ");
         int id = Integer.parseInt(scanner.nextLine());
