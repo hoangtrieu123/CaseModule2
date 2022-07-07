@@ -11,7 +11,7 @@ public class MenuLogin {
         LoginManage.readDocuments();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("--------Welcome to Hoàng Triều Store--------");
+        System.out.println("-❤❤❤❤Welcome to Hoàng Triều Store❤❤❤❤-");
         System.out.println("|                                          |");
         System.out.println("|   Địa chỉ: Lương Khánh Thiện - Hà Nội    |");
         System.out.println("|   Số điện thoại: 0912081098              |");

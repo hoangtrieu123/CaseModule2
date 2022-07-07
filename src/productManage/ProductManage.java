@@ -55,7 +55,7 @@ public class ProductManage implements Serializable {
         for (Product product : arrayListProduct) {
             total += product.getAmount();
         }
-        System.out.println("Total: " + total);
+        System.out.println("Tổng số lượng hàng trong kho: " + total);
 //        updateAmount();
     }
 

@@ -3,16 +3,14 @@ package login;
 import information.InformationCustomer;
 import menu.MenuAdmin;
 import menu.MenuCustomer;
-import menu.MenuLogin;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 
 public class LoginManage {
     public static ArrayList<Account> arrayListAccounts = new ArrayList<>();
+
 
     public Account creatAccount(Scanner scanner) {
         String Username;
@@ -40,19 +38,19 @@ public class LoginManage {
         writeDocuments(arrayListAccounts);
     }
 
-    public boolean checkAccount(String name) {
+    public boolean checkAccount(String userName) {
         String admin = "admin";
         String none = "";
-        if (name.equals(none)){
+        if (userName.equals(none)){
             System.out.println("Không được để trống tên.");
             return false;
         }
-        if (name.equals(admin)) {
+        if (userName.equals(admin)) {
             System.out.println("Trùng với tài khoản admin rồi bạn ơi!");
             return false;
         }
         for (Account account : arrayListAccounts) {
-            if (account.getName().equals(name)) {
+            if (account.getUserName().equals(userName)) {
                 System.out.println("Tài Khoản Đã Tồn Tại");
                 return false;
             }
@@ -65,13 +63,13 @@ public class LoginManage {
         int count=0;
         do {
             System.out.println("Nhập vào tài khoản: ");
-            String name = scanner.next();
+            String Username = scanner.next();
             System.out.println("Nhập vào mật khẩu: ");
             String password = scanner.next();
-            if (checkAdmin(name,password)) {
+            if (checkAdmin(Username,password)) {
                 MenuAdmin.Menu();
             } else {
-                checkAccount(name,password);
+                checkAccount(Username,password);
             }
             count ++;
         }
@@ -92,10 +90,10 @@ public class LoginManage {
     }
 
 
-    public static void checkAccount(String name,String password) {
+    public static void checkAccount(String userName,String password) {
         boolean check = false;
         for (Account a : arrayListAccounts) {
-            if (a.getName().equals(name) && a.getPassword().equals(password)) {
+            if (a.getUserName().equals(userName) && a.getPassword().equals(password)) {
                 check = true;
                 System.out.println("đăng nhập thành công");
                 MenuCustomer menuCustomer = new MenuCustomer();
@@ -112,7 +110,7 @@ public class LoginManage {
         System.out.println();
         for (int i = 0; i < arrayListAccounts.size(); i++) {
             System.out.println();
-            System.out.printf("%-22s%-25s%-30s%s", arrayListAccounts.get(i).getName(), arrayListAccounts.get(i).getInformationCustomer().getNameCustomer(), arrayListAccounts.get(i).getInformationCustomer().getAddress(), arrayListAccounts.get(i).getInformationCustomer().getTelephone());
+            System.out.printf("%-22s%-25s%-30s%s", arrayListAccounts.get(i).getUserName(), arrayListAccounts.get(i).getInformationCustomer().getNameCustomer(), arrayListAccounts.get(i).getInformationCustomer().getAddress(), arrayListAccounts.get(i).getInformationCustomer().getTelephone());
             System.out.println();
         }
     }
@@ -121,7 +119,7 @@ public class LoginManage {
         System.out.println("Tên tài khoản muốn xóa: ");
         String name = scanner.nextLine();
         for (int i = 0; i < arrayListAccounts.size(); i++) {
-            if (arrayListAccounts.get(i).getName().equals(name)) {
+            if (arrayListAccounts.get(i).getUserName().equals(name)) {
                 arrayListAccounts.remove(i);
             }
         }

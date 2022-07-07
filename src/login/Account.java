@@ -5,15 +5,15 @@ import information.InformationCustomer;
 import java.io.Serializable;
 
 public class Account implements Serializable {
-    private String name, password;
+    private String userName, password;
     private InformationCustomer informationCustomer;
 
     public Account() {
     }
 
 
-    public Account(String name, String password, InformationCustomer informationCustomer) {
-        this.name = name;
+    public Account(String userName, String password, InformationCustomer informationCustomer) {
+        this.userName = userName;
         this.password = password;
         this.informationCustomer = informationCustomer;
     }
@@ -23,7 +23,7 @@ public class Account implements Serializable {
     }
 
     public Account(String name, String password) {
-        this.name = name;
+        this.userName = name;
         this.password = password;
     }
 
@@ -35,12 +35,16 @@ public class Account implements Serializable {
 
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.userName = name;
     }
 
     public String getPassword() {
@@ -62,7 +66,7 @@ public class Account implements Serializable {
     @Override
     public String toString() {
         return "Account{" +
-                "name='" + name + '\'' +
+                "name='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", informationCustomer=" + informationCustomer +
                 '}';

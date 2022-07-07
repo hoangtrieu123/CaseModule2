@@ -66,8 +66,10 @@ public class CartManage {
         for (Cart a : arrayListCart) {
             sum += a.getTotalPrice();
         }
+        System.out.println("❤❤❤❤ Thanh toán thành công ❤❤❤❤");
         System.out.printf("%s%s%s", "Tổng tiền của quý khách là: ", "$", sum + "\n");
         productManage.updateAmount();
+        arrayListCart.clear();
     }
 
     //    public void writeDocuments(ArrayList<Cart> arrayListCart) {

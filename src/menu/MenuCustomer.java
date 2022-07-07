@@ -10,7 +10,6 @@ public class MenuCustomer {
         ProductManage productManage = new ProductManage();
         Scanner scanner = new Scanner(System.in);
         CartManage cartManage = new CartManage();
-        MenuBill menuBill = new MenuBill();
 //        CartManage.readDocuments();
         int choice;
         do {
@@ -42,7 +41,7 @@ public class MenuCustomer {
                     cartManage.deleteProductInCart();
                     break;
                 case 6:
-                    menuBill.Menu();
+                    cartManage.pay();
                     break;
                 case 10:
                     MenuLogin.LoginMenu();
