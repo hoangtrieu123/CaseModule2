@@ -42,6 +42,11 @@ public class LoginManage {
 
     public boolean checkAccount(String name) {
         String admin = "admin";
+        String none = "";
+        if (name.equals(none)){
+            System.out.println("Không được để trống tên.");
+            return false;
+        }
         if (name.equals(admin)) {
             System.out.println("Trùng với tài khoản admin rồi bạn ơi!");
             return false;
@@ -71,7 +76,7 @@ public class LoginManage {
             count ++;
         }
         while (count<3);
-            System.out.println("Liên Hệ Admin");
+            System.err.println("Liên Hệ Admin");
             MenuLogin.LoginMenu();
     }
 
@@ -92,11 +97,12 @@ public class LoginManage {
             if (a.getName().equals(name) && a.getPassword().equals(password)) {
                 check = true;
                 System.out.println("đăng nhập thành công");
-                MenuCustomer.Menu();
+                MenuCustomer menuCustomer = new MenuCustomer();
+                menuCustomer.Menu();
             }
         }
         if (!check) {
-            System.out.println("Sai mật khẩu hoặc tên đăng nhập khách ơi.");
+            System.err.println("****      Sai mật khẩu hoặc tên đăng nhập khách ơi       ****");
         }
     }
 

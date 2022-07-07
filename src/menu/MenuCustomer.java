@@ -7,9 +7,10 @@ import java.util.Scanner;
 
 public class MenuCustomer {
     public static void Menu() {
+        ProductManage productManage = new ProductManage();
         Scanner scanner = new Scanner(System.in);
         CartManage cartManage = new CartManage();
-        ProductManage.readDocuments();
+
 //        CartManage.readDocuments();
         int choice;
         do {
@@ -18,7 +19,8 @@ public class MenuCustomer {
             System.out.println("2. Các sản phẩm của shop");
             System.out.println("3. Mua sắm thôi nào. Gét gô!!!!");
             System.out.println("4. Hiển thị giỏ hàng");
-            System.out.println("5. Xóa sản phẩm bạn iu ấn nhầm nhé.");
+            System.out.println("5. Xóa sản phẩm bạn iu chọn nhầm nhé");
+            System.out.println("6. Thanh toán");
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -28,7 +30,7 @@ public class MenuCustomer {
                             "Bởi chúng tôi luôn đề cao tiêu chí mang đến cho quý khách những sản phẩm chất lượng nhất với giá cả luôn phải chăng. ");
                     break;
                 case 2:
-                    ProductManage.displayProduct();
+                    productManage.displayProduct();
                     break;
                 case 3:
                     cartManage.addCart();
@@ -40,6 +42,9 @@ public class MenuCustomer {
                     cartManage.deleteProductInCart();
                     break;
                 case 6:
+                    cartManage.pay();
+                    break;
+                case 10:
                     MenuLogin.LoginMenu();
                     break;
             }

@@ -5,10 +5,12 @@ import login.LoginManage;
 import java.util.Scanner;
 
 public class MenuLogin {
+
     public static void LoginMenu() {
         LoginManage loginManager = new LoginManage();
+        LoginManage.readDocuments();
         Scanner scanner = new Scanner(System.in);
-        loginManager.readDocuments();
+
         System.out.println("--------Welcome to Hoàng Triều Store--------");
         System.out.println("|                                          |");
         System.out.println("|   Địa chỉ: Lương Khánh Thiện - Hà Nội    |");
@@ -28,12 +30,7 @@ public class MenuLogin {
                     break;
                 case 2:
                     loginManager.login(scanner);
-                    int choice1;
-                    choice1 = Integer.parseInt(scanner.next());
-
-                    if (choice1 == 1) {
-                        MenuCustomer.Menu();
-                    }
+                    break;
             }
         } while (choice != 0);
     }

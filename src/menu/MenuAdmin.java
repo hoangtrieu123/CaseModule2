@@ -10,7 +10,6 @@ public class MenuAdmin implements Serializable {
     public static void Menu() {
         ProductManage productManage = new ProductManage();
         Scanner scanner = new Scanner(System.in);
-        productManage.readDocuments();
         int choice;
         do {
             System.out.println("--------Welcome to Hoàng Triều Store--------");
@@ -74,6 +73,7 @@ public class MenuAdmin implements Serializable {
                     break;
                 case 6:
                     productManage.displayProduct();
+                    productManage.updateAmount();
                     break;
                 case 7:
                     LoginManage.displayInformationCustomer();
