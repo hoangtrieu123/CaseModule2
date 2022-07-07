@@ -7,21 +7,37 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static productManage.ProductManage.arrayListProduct;
+
 public class CartManage {
     Scanner scanner = new Scanner(System.in);
     ProductManage productManage = new ProductManage();
     public static ArrayList<Cart> arrayListCart = new ArrayList<>();
+    public static ArrayList<String> arrayListFeedback = new ArrayList<>();
 
     public CartManage() {
     }
 
     public Cart createCart() {
+
         System.out.print("Nhập mã sản phẩm muốn mua đi homieee: ");
         int id = Integer.parseInt(scanner.nextLine());
         Product product = getProductByID(id);
         System.out.print("Nhập số lượng cần mua: ");
         int newAmount = Integer.parseInt(scanner.nextLine());
+        for (Cart a : arrayListCart) {
+            if (a.getId() == id) {
+                a.setAmount(a.getAmount() + newAmount);
+                break;
+            }
+        }
+
+
         for (Product a : arrayListProduct) {
+            if (newAmount < 0) {
+                System.out.println("Không được trêu đùa chúng tôi vậy đâu >.<");
+                System.out.println();
+                break;
+            }
             if (newAmount > a.getAmount()) {
                 System.out.println("Trong kho tui còn có " + a.getAmount() + " mà bạn chọn " + newAmount + " thì sao đủ đáp ứng ạ!!!");
                 System.out.println();
@@ -43,10 +59,8 @@ public class CartManage {
     }
 
     public void addCart() {
-
         Cart cart = createCart();
         arrayListCart.add(cart);
-//        writeDocuments(arrayListCart);
     }
 
     public void displayCart() {
@@ -73,31 +87,6 @@ public class CartManage {
         arrayListCart.clear();
     }
 
-    //    public void writeDocuments(ArrayList<Cart> arrayListCart) {
-//        File file = new File("Cart.txt");
-//        try {
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-//            objectOutputStream.writeObject(arrayListCart);
-//            objectOutputStream.close();
-//        } catch (Exception e) {
-//            System.out.println(".");
-//        }
-//    }
-//
-//    public static void readDocuments() {
-//        File file = new File("Cart.txt");
-//        try {
-//            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
-//            arrayListCart = (ArrayList<Cart>) objectInputStream.readObject();
-//            objectInputStream.close();
-//        } catch (Exception e) {
-//            System.out.println(".");
-//        }
-//    }
-//
     public void deleteProductInCart() {
         System.out.print("Nhập vào mã sản phẩm cần xóa đi homieee: ");
         int id;
@@ -107,7 +96,16 @@ public class CartManage {
                 arrayListCart.remove(i);
             }
         }
-//        writeDocuments(arrayListCart);
+    }
+    public void feedback(Scanner scanner){
+        System.out.print("Giãi bày tâm sự đi ạ: ");
+        String feedback = scanner.nextLine();
+        arrayListFeedback.add(feedback);
+    }
+    public void displayFeedback(){
+        for (String a: arrayListFeedback) {
+            System.out.println("Khách nói: " + a);
+        }
     }
 }
 

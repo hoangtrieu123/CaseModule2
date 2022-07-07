@@ -28,7 +28,7 @@ public class LoginManage {
                 }
             }
         }
-        while (!checkAccount(name));
+        while (!checkSameAccount(name));
         System.out.print("2. Nhập mật khẩu mới: ");
         String password = scanner.nextLine();
         System.out.print("Cho mình xin tên bạn ạ: ");
@@ -51,6 +51,15 @@ public class LoginManage {
         return new Account(name, password, information);
     }
 
+//    public String decor() {
+//        String b = null;
+//        for (Account a : arrayListAccounts) {
+//            if (a.getname().equals())
+//                b = a.getname();
+//        }
+//        return b;
+//    }
+
     public void addAccount() {
         Scanner scanner = new Scanner(System.in);
         Account account = creatAccount(scanner);
@@ -58,11 +67,11 @@ public class LoginManage {
         writeDocuments(arrayListAccounts);
     }
 
-    public boolean checkAccount(String userName) {
+    public boolean checkSameAccount(String userName) {
         String admin = "admin";
         String none = "";
         String name = "an";
-        if (userName.equals(name)){
+        if (userName.equals(name)) {
             System.err.println("Chúng tôi không hỗ trợ tên này!!!!");
             return false;
         }

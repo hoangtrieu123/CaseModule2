@@ -1,6 +1,7 @@
 package menu;
 
 import cart.CartManage;
+import login.LoginManage;
 import productManage.ProductManage;
 
 import java.util.Scanner;
@@ -10,6 +11,7 @@ public class MenuCustomer {
         ProductManage productManage = new ProductManage();
         Scanner scanner = new Scanner(System.in);
         CartManage cartManage = new CartManage();
+        LoginManage loginmanage = new LoginManage();
 //        CartManage.readDocuments();
         int choice;
         do {
@@ -20,6 +22,7 @@ public class MenuCustomer {
             System.out.println("4. Hiển thị giỏ hàng");
             System.out.println("5. Xóa sản phẩm bạn iu chọn nhầm nhé");
             System.out.println("6. Thanh toán");
+            System.out.println("7. Có góp ý gì thì để tại đây nhé bạn❤");
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -42,6 +45,9 @@ public class MenuCustomer {
                     break;
                 case 6:
                     cartManage.pay();
+                    break;
+                case 7:
+                    cartManage.feedback(scanner);
                     break;
                 case 10:
                     MenuLogin.LoginMenu();

@@ -10,7 +10,6 @@ public class MenuLogin {
         LoginManage loginManager = new LoginManage();
         LoginManage.readDocuments();
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("-❤❤❤❤Welcome to Hoàng Triều Store❤❤❤❤-");
         System.out.println("|                                          |");
         System.out.println("|   Địa chỉ: Lương Khánh Thiện - Hà Nội    |");

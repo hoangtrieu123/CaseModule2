@@ -1,5 +1,6 @@
 package menu;
 
+import cart.CartManage;
 import login.LoginManage;
 import productManage.ProductManage;
 
@@ -9,6 +10,7 @@ import java.util.Scanner;
 public class MenuAdmin implements Serializable {
     public static void Menu() {
         ProductManage productManage = new ProductManage();
+        CartManage cartManage = new CartManage();
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         do {
@@ -28,6 +30,7 @@ public class MenuAdmin implements Serializable {
             System.out.println("7. Hiển thị toàn bộ sản phẩm của shop");
             System.out.println("8. Hiển thị các tài khoản đã đăng ký");
             System.out.println("9. Xóa tài khoản khách");
+            System.out.println("10. Feedback của khách");
             System.out.println("0. Đăng xuất");
             System.out.print("Nhập lựa chọn: ");
             try {
@@ -89,6 +92,9 @@ public class MenuAdmin implements Serializable {
                     break;
                 case 9:
                     LoginManage.deleteAccount(scanner);
+                    break;
+                case 10:
+                    cartManage.displayFeedback();
                     break;
                 case 0:
                     MenuLogin.LoginMenu();
