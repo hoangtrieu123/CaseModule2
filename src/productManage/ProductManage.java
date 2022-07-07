@@ -1,5 +1,7 @@
 package productManage;
 
+import cart.Cart;
+import cart.CartManage;
 import productManage.Product;
 
 import java.io.*;
@@ -8,7 +10,15 @@ import java.util.Scanner;
 
 public class ProductManage implements Serializable {
     public static ArrayList<Product> arrayListProduct = new ArrayList<>();
-    ArrayList<Product> arrayListCart = new ArrayList<>();
+    public static ArrayList<Product> arrayListCart = new ArrayList<>();
+
+    public static ArrayList<Product> getArrayListProduct() {
+        return arrayListProduct;
+    }
+
+    public static void setArrayListProduct(ArrayList<Product> arrayListProduct) {
+        ProductManage.arrayListProduct = arrayListProduct;
+    }
 
     public Product createProduct(Scanner scanner) {
         Brand brand = createBrand(scanner);
@@ -36,12 +46,17 @@ public class ProductManage implements Serializable {
     }
 
     public static void displayProduct() {
+        int total = 0;
         System.out.printf("%5s%15s%24s%18s%20s%20s\n", "Mã Số", "Hãng", "Tên Sản Phẩm", "Giá", "Số Lượng", "Kích Cỡ");
         for (int i = 0; i < arrayListProduct.size(); i++) {
             System.out.println();
             System.out.printf("%-16s%-16s%-27s%s%-17s%-21s%s\n", arrayListProduct.get(i).getId(), arrayListProduct.get(i).getBrand().getName(), arrayListProduct.get(i).getName(), "$", arrayListProduct.get(i).getPrice(), arrayListProduct.get(i).getAmount(), arrayListProduct.get(i).getSize());
             System.out.println();
         }
+        for (Product product : arrayListProduct) {
+            total += product.getAmount();
+        }
+        System.out.println("Total: " + total);
     }
 
     public void searchById(Scanner scanner) {
@@ -56,6 +71,22 @@ public class ProductManage implements Serializable {
             }
         }
     }
+
+//    public static void updateAmount() {
+//        for (int i = 0; i < arrayListCart.size(); i++) {
+//            for (Product product : arrayListProduct) {
+//                if (arrayListCart.get(i).getId() == product.getId()) {
+//                    product.setAmount(product.getAmount() - arrayListCart.get(i).getAmount());
+//                }
+//            }
+//        }
+//        int newAmount;
+//        for (Product product : arrayListProduct){
+//            if (id == product.getId()){
+//                newAmount = product.getAmount() - amount;
+//                product.setAmount(newAmount);
+//            }
+//        }
 
     public void searchByName(Scanner scanner) {
         System.out.println("Nhập tên đồ cần tìm đi bro: ");
@@ -137,6 +168,7 @@ public class ProductManage implements Serializable {
             }
         }
     }
+
 
     public void writeDocuments(ArrayList<Product> arrayListProduct) {
         File file = new File("Product.txt");

@@ -10,7 +10,7 @@ public class MenuCustomer {
         Scanner scanner = new Scanner(System.in);
         CartManage cartManage = new CartManage();
         ProductManage.readDocuments();
-        CartManage.readDocuments();
+//        CartManage.readDocuments();
         int choice;
         do {
             System.out.println("----Welcome to Hoàng Triều Store----");
@@ -38,6 +38,9 @@ public class MenuCustomer {
                     break;
                 case 5:
                     cartManage.deleteProductInCart();
+                    break;
+                case 6:
+                    MenuLogin.LoginMenu();
                     break;
             }
         } while (choice != 0);

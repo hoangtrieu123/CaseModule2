@@ -81,7 +81,6 @@ public class MenuAdmin implements Serializable {
                 case 8:
                     LoginManage.deleteAccount(scanner);
                     break;
-
                 case 0:
                     MenuLogin.LoginMenu();
                     break;

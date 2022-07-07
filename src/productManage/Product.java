@@ -11,6 +11,7 @@ public class Product implements Serializable {
     private String size;
     private Brand brand;
 
+
     public Product(int id, String name, int price, int amount, String size, Brand brand) {
         this.id = id;
         this.name = name;
@@ -18,7 +19,9 @@ public class Product implements Serializable {
         this.amount = amount;
         this.size = size;
         this.brand = brand;
+
     }
+
 
     public Product(String name, int price, int amount, String size, Brand brand) {
         try {
