@@ -23,7 +23,7 @@ public class MenuLogin {
             System.out.println("2. Đăng nhập");
 
             System.out.print("Chọn đi khách iu <3: ");
-            choice = scanner.nextInt();
+            choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
                     loginManager.addAccount();

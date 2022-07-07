@@ -50,7 +50,7 @@ public class LoginManage {
             return false;
         }
         for (Account account : arrayListAccounts) {
-            if (account.getUserName().equals(userName)) {
+            if (account.getname().equals(userName)) {
                 System.out.println("Tài Khoản Đã Tồn Tại");
                 return false;
             }
@@ -63,9 +63,9 @@ public class LoginManage {
         int count=0;
         do {
             System.out.println("Nhập vào tài khoản: ");
-            String Username = scanner.next();
+            String Username = scanner.nextLine();
             System.out.println("Nhập vào mật khẩu: ");
-            String password = scanner.next();
+            String password = scanner.nextLine();
             if (checkAdmin(Username,password)) {
                 MenuAdmin.Menu();
             } else {
@@ -93,7 +93,7 @@ public class LoginManage {
     public static void checkAccount(String userName,String password) {
         boolean check = false;
         for (Account a : arrayListAccounts) {
-            if (a.getUserName().equals(userName) && a.getPassword().equals(password)) {
+            if (a.getname().equals(userName) && a.getPassword().equals(password)) {
                 check = true;
                 System.out.println("đăng nhập thành công");
                 MenuCustomer menuCustomer = new MenuCustomer();
@@ -101,7 +101,7 @@ public class LoginManage {
             }
         }
         if (!check) {
-            System.err.println("****      Sai mật khẩu hoặc tên đăng nhập khách ơi       ****");
+            System.out.println("****  Sai mật khẩu hoặc tên đăng nhập khách ơi  ****");
         }
     }
 
@@ -110,7 +110,7 @@ public class LoginManage {
         System.out.println();
         for (int i = 0; i < arrayListAccounts.size(); i++) {
             System.out.println();
-            System.out.printf("%-22s%-25s%-30s%s", arrayListAccounts.get(i).getUserName(), arrayListAccounts.get(i).getInformationCustomer().getNameCustomer(), arrayListAccounts.get(i).getInformationCustomer().getAddress(), arrayListAccounts.get(i).getInformationCustomer().getTelephone());
+            System.out.printf("%-22s%-25s%-30s%s", arrayListAccounts.get(i).getname(), arrayListAccounts.get(i).getInformationCustomer().getNameCustomer(), arrayListAccounts.get(i).getInformationCustomer().getAddress(), arrayListAccounts.get(i).getInformationCustomer().getTelephone());
             System.out.println();
         }
     }
@@ -119,7 +119,7 @@ public class LoginManage {
         System.out.println("Tên tài khoản muốn xóa: ");
         String name = scanner.nextLine();
         for (int i = 0; i < arrayListAccounts.size(); i++) {
-            if (arrayListAccounts.get(i).getUserName().equals(name)) {
+            if (arrayListAccounts.get(i).getname().equals(name)) {
                 arrayListAccounts.remove(i);
             }
         }
