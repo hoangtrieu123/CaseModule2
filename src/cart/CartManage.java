@@ -1,29 +1,32 @@
 package cart;
 
-import login.Account;
-import login.LoginManage;
 import productManage.Product;
 import productManage.ProductManage;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static productManage.ProductManage.arrayListProduct;
-
 public class CartManage {
     Scanner scanner = new Scanner(System.in);
     ProductManage productManage = new ProductManage();
     public static ArrayList<Cart> arrayListCart = new ArrayList<>();
+
     public CartManage() {
     }
 
     public Cart createCart() {
-        System.out.println("Nhập mã sản phẩm muốn mua đi homieee: ");
+        System.out.print("Nhập mã sản phẩm muốn mua đi homieee: ");
         int id = Integer.parseInt(scanner.nextLine());
         Product product = getProductByID(id);
-        System.out.println("Nhập số lượng cần mua");
+        System.out.print("Nhập số lượng cần mua: ");
         int newAmount = Integer.parseInt(scanner.nextLine());
+        for (Product a : arrayListProduct) {
+            if (newAmount > a.getAmount()) {
+                System.out.println("Trong kho tui còn có " + a.getAmount() + " mà bạn chọn " + newAmount + " thì sao đủ đáp ứng ạ!!!");
+                System.out.println();
+            }
+        }
         int totalPrice = newAmount * product.getPrice();
         return new Cart(newAmount, product, totalPrice);
     }
@@ -58,7 +61,7 @@ public class CartManage {
 
     }
 
-    public void pay(){
+    public void pay() {
         int sum = 0;
         for (Cart a : arrayListCart) {
             sum += a.getTotalPrice();

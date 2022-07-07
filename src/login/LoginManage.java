@@ -17,17 +17,17 @@ public class LoginManage {
     public Account creatAccount(Scanner scanner) {
         String Username;
         do {
-            System.out.println("1. Nhập tài khoản mới: ");
+            System.out.print("1. Nhập tài khoản mới: ");
             Username = scanner.nextLine();
         }
         while (!checkAccount(Username));
-        System.out.println("2. Nhập mật khẩu mới: ");
+        System.out.print("2. Nhập mật khẩu mới: ");
         String password = scanner.nextLine();
-        System.out.println("Cho mình xin tên bạn ạ: ");
+        System.out.print("Cho mình xin tên bạn ạ: ");
         String nameCustomer = scanner.nextLine();
-        System.out.println("Cho mình xin địa chỉ ạ: ");
+        System.out.print("Cho mình xin địa chỉ ạ: ");
         String address = scanner.nextLine();
-        System.out.println("Cho mình xin số điện thoại ạ: ");
+        System.out.print("Cho mình xin số điện thoại ạ: ");
         String telephone = scanner.nextLine();
         InformationCustomer information = new InformationCustomer(nameCustomer, address, telephone);
         return new Account(Username, password, information);
@@ -76,8 +76,9 @@ public class LoginManage {
             count ++;
         }
         while (count<3);
-            System.err.println("Liên Hệ Admin");
-            MenuLogin.LoginMenu();
+            System.err.println("QUÊN MẬT KHẨU HAY SAO MÀ NHẬP SAI NHIỀU VẬY -_-");
+        System.err.println("     CHẠY LẠI CHƯƠNG TRÌNH ĐI NHÉ >.<");
+            System.exit(0);
     }
 
     public boolean checkAdmin(String account,String password) {
