@@ -87,9 +87,9 @@ public class LoginManage {
     public void login(Scanner scanner) {
         int count = 0;
         do {
-            System.out.println("Nhập vào tài khoản: ");
+            System.out.print("Nhập vào tài khoản: ");
             String Username = scanner.nextLine();
-            System.out.println("Nhập vào mật khẩu: ");
+            System.out.print("Nhập vào mật khẩu: ");
             String password = scanner.nextLine();
             if (checkAdmin(Username, password)) {
                 MenuAdmin.Menu();

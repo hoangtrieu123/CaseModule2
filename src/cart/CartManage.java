@@ -25,6 +25,7 @@ public class CartManage {
             if (newAmount > a.getAmount()) {
                 System.out.println("Trong kho tui còn có " + a.getAmount() + " mà bạn chọn " + newAmount + " thì sao đủ đáp ứng ạ!!!");
                 System.out.println();
+                break;
             }
         }
         int totalPrice = newAmount * product.getPrice();

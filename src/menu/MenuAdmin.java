@@ -24,11 +24,12 @@ public class MenuAdmin implements Serializable {
             System.out.println("3. Xóa sản phẩm theo ID");
             System.out.println("4. Tìm sản phẩm theo ID");
             System.out.println("5. Tìm sản phẩm theo tên");
-            System.out.println("6. Hiển thị toàn bộ sản phẩm của shop");
-            System.out.println("7. Hiển thị các tài khoản đã đăng ký");
-            System.out.println("8. Xóa tài khoản khách");
+            System.out.println("6. Tìm sản phẩm theo tên hãng");
+            System.out.println("7. Hiển thị toàn bộ sản phẩm của shop");
+            System.out.println("8. Hiển thị các tài khoản đã đăng ký");
+            System.out.println("9. Xóa tài khoản khách");
             System.out.println("0. Đăng xuất");
-            System.out.println("Nhập lựa chọn: ");
+            System.out.print("Nhập lựa chọn: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
@@ -40,7 +41,7 @@ public class MenuAdmin implements Serializable {
                     productManage.addProduct(scanner);
                     break;
                 case 2:
-                    System.out.println("Nhập vào id sản phẩm cần sửa: ");
+                    System.out.print("Nhập vào id sản phẩm cần sửa: ");
                     int id = Integer.parseInt(scanner.nextLine());
                     System.out.println("1. Sửa tên hãng");
                     System.out.println("2. Sửa tên sản phẩm");
@@ -77,13 +78,16 @@ public class MenuAdmin implements Serializable {
                     productManage.searchByName(scanner);
                     break;
                 case 6:
+                    productManage.searchByBrand(scanner);
+                    break;
+                case 7:
                     productManage.displayProduct();
                     productManage.updateAmount();
                     break;
-                case 7:
+                case 8:
                     LoginManage.displayInformationCustomer();
                     break;
-                case 8:
+                case 9:
                     LoginManage.deleteAccount(scanner);
                     break;
                 case 0:
