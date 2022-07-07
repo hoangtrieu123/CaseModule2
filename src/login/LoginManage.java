@@ -18,11 +18,11 @@ public class LoginManage {
             System.out.print("1. Nhập tài khoản mới: ");
             name = scanner.nextLine();
             while (true) {
-                Pattern p = Pattern.compile("^[a-z0-9._-]{3,15}$");
+                Pattern p = Pattern.compile("^[a-z0-9._-]{2,15}$");
                 if (p.matcher(name).find()) {
                     break;
                 } else {
-                    System.out.println("Tên đăng nhập phải từ 3-15 ký tự bạn nhé ");
+                    System.out.println("Tên đăng nhập phải từ 2-15 ký tự bạn nhé ");
                     System.out.print("1. Nhập tài khoản mới: ");
                     name = scanner.nextLine();
                 }
@@ -61,6 +61,11 @@ public class LoginManage {
     public boolean checkAccount(String userName) {
         String admin = "admin";
         String none = "";
+        String name = "an";
+        if (userName.equals(name)){
+            System.err.println("Chúng tôi không hỗ trợ tên này!!!!");
+            return false;
+        }
         if (userName.equals(none)) {
             System.out.println("Không được để trống tên.");
             return false;

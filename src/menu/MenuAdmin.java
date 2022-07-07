@@ -10,7 +10,7 @@ public class MenuAdmin implements Serializable {
     public static void Menu() {
         ProductManage productManage = new ProductManage();
         Scanner scanner = new Scanner(System.in);
-        int choice;
+        int choice = -1;
         do {
             System.out.println("--------Welcome to Hoàng Triều Store--------");
             System.out.println("|                                          |");
@@ -29,7 +29,12 @@ public class MenuAdmin implements Serializable {
             System.out.println("8. Xóa tài khoản khách");
             System.out.println("0. Đăng xuất");
             System.out.println("Nhập lựa chọn: ");
-            choice = Integer.parseInt(scanner.nextLine());
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (Exception e) {
+                System.out.println("Vui lòng nhập đúng!");
+            }
+
             switch (choice) {
                 case 1:
                     productManage.addProduct(scanner);

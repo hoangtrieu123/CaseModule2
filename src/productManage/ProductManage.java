@@ -15,10 +15,6 @@ public class ProductManage implements Serializable {
     }
     public static ArrayList<Product> arrayListProduct = new ArrayList<>();
 
-    public static void setArrayListProduct(ArrayList<Product> arrayListProduct) {
-        ProductManage.arrayListProduct = arrayListProduct;
-    }
-
     public Product createProduct(Scanner scanner) {
         Brand brand = createBrand(scanner);
         System.out.println("Tên sản phẩm: ");
