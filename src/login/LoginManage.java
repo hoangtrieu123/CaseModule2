@@ -3,22 +3,32 @@ package login;
 import information.InformationCustomer;
 import menu.MenuAdmin;
 import menu.MenuCustomer;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.regex.Pattern;
 
 public class LoginManage {
     public static ArrayList<Account> arrayListAccounts = new ArrayList<>();
 
-
     public Account creatAccount(Scanner scanner) {
-        String Username;
+        String name;
         do {
             System.out.print("1. Nhập tài khoản mới: ");
-            Username = scanner.nextLine();
+            name = scanner.nextLine();
+            while (true) {
+                Pattern p = Pattern.compile("^[a-z0-9._-]{3,15}$");
+                if (p.matcher(name).find()) {
+                    break;
+                } else {
+                    System.out.println("Tên đăng nhập phải từ 3-15 ký tự bạn nhé ");
+                    System.out.print("1. Nhập tài khoản mới: ");
+                    name = scanner.nextLine();
+                }
+            }
         }
-        while (!checkAccount(Username));
+        while (!checkAccount(name));
         System.out.print("2. Nhập mật khẩu mới: ");
         String password = scanner.nextLine();
         System.out.print("Cho mình xin tên bạn ạ: ");
@@ -27,8 +37,18 @@ public class LoginManage {
         String address = scanner.nextLine();
         System.out.print("Cho mình xin số điện thoại ạ: ");
         String telephone = scanner.nextLine();
+        while (true) {
+            Pattern p = Pattern.compile("^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$");
+            if (p.matcher(telephone).find()) {
+                break;
+            } else {
+                System.out.println("Nhập đúng định dạng số diện thoại giúp mình nhé");
+                System.out.println("Nhập lại đi ạ");
+                telephone = scanner.nextLine();
+            }
+        }
         InformationCustomer information = new InformationCustomer(nameCustomer, address, telephone);
-        return new Account(Username, password, information);
+        return new Account(name, password, information);
     }
 
     public void addAccount() {
@@ -41,7 +61,7 @@ public class LoginManage {
     public boolean checkAccount(String userName) {
         String admin = "admin";
         String none = "";
-        if (userName.equals(none)){
+        if (userName.equals(none)) {
             System.out.println("Không được để trống tên.");
             return false;
         }
@@ -60,26 +80,26 @@ public class LoginManage {
 
 
     public void login(Scanner scanner) {
-        int count=0;
+        int count = 0;
         do {
             System.out.println("Nhập vào tài khoản: ");
             String Username = scanner.nextLine();
             System.out.println("Nhập vào mật khẩu: ");
             String password = scanner.nextLine();
-            if (checkAdmin(Username,password)) {
+            if (checkAdmin(Username, password)) {
                 MenuAdmin.Menu();
             } else {
-                checkAccount(Username,password);
+                checkAccount(Username, password);
             }
-            count ++;
+            count++;
         }
-        while (count<3);
-            System.err.println("QUÊN MẬT KHẨU HAY SAO MÀ NHẬP SAI NHIỀU VẬY -_-");
+        while (count < 3);
+        System.err.println("QUÊN MẬT KHẨU HAY SAO MÀ NHẬP SAI NHIỀU VẬY -_-");
         System.err.println("     CHẠY LẠI CHƯƠNG TRÌNH ĐI NHÉ >.<");
-            System.exit(0);
+        System.exit(0);
     }
 
-    public boolean checkAdmin(String account,String password) {
+    public boolean checkAdmin(String account, String password) {
 
         if (account.equals("admin") && password.equals("admin")) {
             return true;
@@ -90,7 +110,7 @@ public class LoginManage {
     }
 
 
-    public static void checkAccount(String userName,String password) {
+    public static void checkAccount(String userName, String password) {
         boolean check = false;
         for (Account a : arrayListAccounts) {
             if (a.getname().equals(userName) && a.getPassword().equals(password)) {
@@ -101,7 +121,7 @@ public class LoginManage {
             }
         }
         if (!check) {
-            System.out.println("****  Sai mật khẩu hoặc tên đăng nhập khách ơi  ****");
+            System.err.println("****  Sai mật khẩu hoặc tên đăng nhập khách ơi  ****");
         }
     }
 

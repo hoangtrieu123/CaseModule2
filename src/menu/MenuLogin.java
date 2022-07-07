@@ -17,13 +17,18 @@ public class MenuLogin {
         System.out.println("|   Số điện thoại: 0912081098              |");
         System.out.println("|                                          |");
         System.out.println("--------------------------------------------");
-        int choice;
+        int choice = -1;
         do {
             System.out.println("1. Đăng ký tài khoản");
             System.out.println("2. Đăng nhập");
 
             System.out.print("Chọn đi khách iu <3: ");
-            choice = Integer.parseInt(scanner.nextLine());
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (Exception e) {
+                System.out.println("Vui lòng nhập đúng!");
+            }
+
             switch (choice) {
                 case 1:
                     loginManager.addAccount();
