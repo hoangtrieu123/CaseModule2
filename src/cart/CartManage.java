@@ -21,6 +21,13 @@ public class CartManage {
 
         System.out.print("Nhập mã sản phẩm muốn mua đi homieee: ");
         int id = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < arrayListCart.size(); i++) {
+            if (id == arrayListCart.get(i).getId()){
+                System.out.println("Đã có trong giỏ hàng");
+                System.out.print("Nhập mã sản phẩm muốn mua đi homieee: ");
+                id = Integer.parseInt(scanner.nextLine());
+            }
+        }
         Product product = getProductByID(id);
         System.out.print("Nhập số lượng cần mua: ");
         int newAmount = Integer.parseInt(scanner.nextLine());
@@ -30,20 +37,19 @@ public class CartManage {
                 break;
             }
         }
-
-
-        for (Product a : arrayListProduct) {
+        for (Product b : arrayListProduct) {
             if (newAmount < 0) {
                 System.out.println("Không được trêu đùa chúng tôi vậy đâu >.<");
                 System.out.println();
                 break;
             }
-            if (newAmount > a.getAmount()) {
-                System.out.println("Trong kho tui còn có " + a.getAmount() + " mà bạn chọn " + newAmount + " thì sao đủ đáp ứng ạ!!!");
+            if (newAmount > b.getAmount()) {
+                System.out.println("Trong kho tui còn có " + b.getAmount() + " mà bạn chọn " + newAmount + " thì sao đủ đáp ứng ạ!!!");
                 System.out.println();
                 break;
             }
         }
+
         int totalPrice = newAmount * product.getPrice();
         return new Cart(newAmount, product, totalPrice);
     }

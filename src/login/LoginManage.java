@@ -18,7 +18,7 @@ public class LoginManage {
             System.out.print("1. Nhập tài khoản mới: ");
             name = scanner.nextLine();
             while (true) {
-                Pattern p = Pattern.compile("^[a-z0-9._-]{2,15}$");
+                Pattern p = Pattern.compile("^[a-z0-9._-]{4,15}$");
                 if (p.matcher(name).find()) {
                     break;
                 } else {
@@ -70,9 +70,9 @@ public class LoginManage {
     public boolean checkSameAccount(String userName) {
         String admin = "admin";
         String none = "";
-        String name = "an";
-        if (userName.equals(name)) {
-            System.err.println("Chúng tôi không hỗ trợ tên này!!!!");
+        String name = "linh";
+        if (userName.equals(name)){
+            System.err.println("Chúng tôi không hỗ trợ tên này");
             return false;
         }
         if (userName.equals(none)) {
@@ -135,7 +135,7 @@ public class LoginManage {
             }
         }
         if (!check) {
-            System.err.println("****  Sai mật khẩu hoặc tên đăng nhập khách ơi  ****");
+            System.out.println("****  Sai mật khẩu hoặc tên đăng nhập khách ơi  ****");
         }
     }
 
@@ -170,7 +170,7 @@ public class LoginManage {
             objectOutputStream.writeObject(arrayListAccounts);
             objectOutputStream.close();
         } catch (Exception e) {
-            System.out.println("File đã tồn tại");
+            System.out.println(".");
         }
     }
 
@@ -181,7 +181,7 @@ public class LoginManage {
             arrayListAccounts = (ArrayList<Account>) objectInputStream.readObject();
             objectInputStream.close();
         } catch (Exception e) {
-            System.out.println("File đã tồn tại");
+            System.out.println(".");
         }
     }
 }
